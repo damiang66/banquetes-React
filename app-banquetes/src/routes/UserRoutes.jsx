@@ -4,6 +4,8 @@ import { Navbar } from "../components/layout/Navbar"
 import { RegisterPage } from "../pages/RegisterPage"
 import { UsersPage } from "../pages/UsersPage"
 import { useAuth } from "../auth/hooks/useAuth"
+import { ClienteList } from "../components/Cliente/ClienteList"
+import { PaginaPrincipal } from "../components/layout/PaginaPrincipal"
 
 
 export const UserRoutes = () => {
@@ -16,8 +18,10 @@ export const UserRoutes = () => {
                     <Route path="users" element={<UsersPage />} />
 
                     {!login.isAdmin || <>
+                        <Route path="clientes/lista" element={<ClienteList />} />
                         <Route path="users/register" element={<RegisterPage />} />
                         <Route path="users/edit/:id" element={<RegisterPage />} />
+                        <Route path="paginaPrincipal" element={<PaginaPrincipal />} />
                     </>
                     }
                     <Route path="/" element={<Navigate to="/users" />} />

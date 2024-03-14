@@ -17,9 +17,11 @@ const {user,isAdmin,isAuth}= useSelector(state=>state.auth)
         
         try {
             const response = await loginUser({ username, password });
+            console.log(response);
             const token = response.data.token;
             const claims = JSON.parse(window.atob(token.split(".")[1]));
-            console.log(claims);
+         
+            console.log("USUARIO: " + JSON.stringify(claims));
             const user = { username: claims.sub }
             dispatch(onLogin({user, isAdmin: claims.isAdmin})
                );
@@ -29,7 +31,7 @@ const {user,isAdmin,isAuth}= useSelector(state=>state.auth)
                 user,
             }));
             sessionStorage.setItem('token', `Bearer ${token}`);
-            navigate('/users');
+            navigate('/paginaPrincipal');
         } catch (error) {
             if (error.response?.status == 401) {
                 Swal.fire('Error Login', 'Username o password invalidos', 'error');

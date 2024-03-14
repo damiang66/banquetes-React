@@ -11,6 +11,7 @@ export const authSlice = createSlice({
     reducers:{
         onLogin:(state,action)=>{
             state.isAuth= true;
+            console.log(action.payload);
             state.isAdmin= action.payload.isAdmin;
             state.user= action.payload.user;
         },
