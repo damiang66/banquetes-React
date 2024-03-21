@@ -17,22 +17,11 @@ export const ClienteRow = ({ id, nombre, apellido, email,telefono,direccion }) =
     <td>{direccion}</td>
     {!login.isAdmin ||
         <>
-            <td>
-                <button
-                    type="button"
-                    className="btn btn-secondary btn-sm"
-                    onClick={() => handlerClienteSelectedForm({
-                        id,
-                        nombre, apellido, email,telefono,direccion
-                    })}
-                >
-                    update
-                </button>
-            </td>
+            
             <td>
                 <NavLink className={'btn btn-secondary btn-sm'}
-                    to={'/users/edit/' + id} >
-                    update route
+                    to={'/clientes/form/' + id} >
+                    Editar
                 </NavLink>
             </td>
             <td>
@@ -41,7 +30,7 @@ export const ClienteRow = ({ id, nombre, apellido, email,telefono,direccion }) =
                     className="btn btn-danger btn-sm"
                     onClick={() => handlerRemoveClientes(id)}
                 >
-                    remove
+                   Eliminar
                 </button>
             </td>
         </>

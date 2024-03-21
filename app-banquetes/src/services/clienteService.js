@@ -19,21 +19,21 @@ export const clienteSave = async(cliente)=>{
     try {
         return await axios.post(`${url}`,cliente,config())
     } catch (error) {
-        return error;
+        throw error;
     }
 }
 export const clienteFindById = async(id)=>{
     try {
         return await axios.get(`${url}/${id}`,config())
     } catch (error) {
-        return error;
+        throw error;
     }
 }
 export const clienteUpdate = async (cliente)=>{
     try {
         return await axios.put(`${url}/${cliente.id}`,cliente,config())
     } catch (error) {
-        return error;
+        throw error;
     }
 
 }
@@ -41,6 +41,15 @@ export const clienteDelete = async(id)=>{
     try {
         return await axios.delete(`${url}/${id}`,config())
     } catch (error) {
-        return error;
+        throw error;
+    }
+
+}
+export const ClienteBuscar = async (termino)=>{
+    try {
+        console.log('TERMINO ' + termino);
+      return await axios.get(`${url}/buscar/${termino}`,config())  
+    } catch (error) {
+       // throw error;
     }
 }

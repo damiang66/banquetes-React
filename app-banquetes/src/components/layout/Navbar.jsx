@@ -22,11 +22,22 @@ export const Navbar = () => {
                             </NavLink>
                         </li>
                         {!login.isAdmin ||
-                            <li className="nav-item">
+                            <><li className="nav-item">
                                 <NavLink className="nav-link" to="/users/register">
                                     Registrar Usuario
                                 </NavLink>
                             </li>
+                            <li className="nav-item">
+                                    <NavLink className="nav-link" to="/clientes/lista">
+                                        Cliente
+                                    </NavLink>
+                                </li>
+                                <li className="nav-item">
+                                <NavLink className="nav-link" to="/clientes/form">
+                                    Registrar Cliente
+                                </NavLink>
+                            </li>
+                                </>
                         }
                     </ul>
                 </div>

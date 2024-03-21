@@ -2,8 +2,10 @@ import React, { useEffect } from 'react'
 import { useClientes } from '../../hooks/useClientes';
 import { useAuth } from '../../auth/hooks/useAuth';
 import { ClienteList } from './ClienteList';
+import { useNavigate } from 'react-router-dom';
 
 export const ClientePage = () => {
+    const navegate=useNavigate()
     const {
         clientes,
         visibleForm,
@@ -16,7 +18,9 @@ export const ClientePage = () => {
     useEffect(() => {
         getClientes();
     }, []);
-    
+    const nuevoCliente = ()=>{
+        navegate('/clientes/form')
+    }
     return (
         <>
 
@@ -28,7 +32,7 @@ export const ClientePage = () => {
                     <div className="col">
                         {(visibleForm || !login.isAdmin) || <button
                             className="btn btn-primary my-2"
-                            onClick={console.log()}>
+                            onClick={()=>nuevoCliente()}>
                             Nuevo Cliente
                         </button>}
 

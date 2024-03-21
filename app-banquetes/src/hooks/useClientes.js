@@ -32,8 +32,9 @@ export const useClientes =()=>{
 
         let response;
         try {
-
-            if (cliente.id === 0) {
+            console.log(cliente.id);
+            if (cliente.id === undefined) {
+                
                 response = await clienteSave(cliente);
                 dispatch(addCLientes(response.data))
             } else {
@@ -44,17 +45,18 @@ export const useClientes =()=>{
             
 
             Swal.fire(
-                (user.id === 0) ?
+                (cliente.id === 0) ?
                     'Cliente Creado' :
                     'Cliente Actualizado',
-                (user.id === 0) ?
+                (cliente.id === 0) ?
                     'El cliente ha sido creado con exito!' :
                     'El cliente ha sido actualizado con exito!',
                 'success'
             );
-            handlerCloseForm();
-            navigate('/users');
+           // handlerCloseForm();
+            navigate('/clientes/lista');
         } catch (error) {
+            console.log('Error: ' + error);
             if (error.response && error.response.status == 400) {
                dispatch( onError(error.response.data));
             } else if (error.response && error.response.status == 500 &&
