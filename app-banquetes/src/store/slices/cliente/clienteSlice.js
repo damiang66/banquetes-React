@@ -1,21 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
-export const initialUserForm = {
+export const initialClienteForm = {
     id: 0,
-    username: '',
-    password: '',
+    nombre: '',
+    apellido: '',
     email: '',
-    admin: false,
+    telefono: '',
+    direccion:'',
 }
 const initialErrors = {
-    username: '',
-    password: '',
+    nombre: '',
+    apellido: '',
     email: '',
+    telefono: '',
+    direccion:'',
 }
 export const clienteSlice = createSlice({
     name: 'clientes',
     initialState:{
         clientes:[],
-        userSelected:initialUserForm,
+        userSelected:initialClienteForm,
         visibleForm:false,
         errors:initialErrors,
     },
@@ -46,13 +49,14 @@ export const clienteSlice = createSlice({
              
                 return u;
             })
-            state.userSelected=initialUserForm;
+            state.userSelected=initialClienteForm;
             state.visibleForm=false;
         },
         loadingClientes:(state,action)=>{
+            console.log(state);
             state.clientes = action.payload
         },
-        onUserSelectedForm:(state,action)=>{
+        onClienteSelectedForm:(state,action)=>{
             state.userSelected= action.payload;
             state.visibleForm=true;
         },
@@ -75,7 +79,7 @@ export const {
     removeCLientes,
     updateClientes,
     loadingClientes,
-    onUserSelectedForm,
+    onClienteSelectedForm,
     onOpenForm,
     onCloseForm,
     onError,

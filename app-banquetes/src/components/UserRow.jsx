@@ -7,7 +7,7 @@ import { useAuth } from "../auth/hooks/useAuth";
 
 export const UserRow = ({ id, username, email, admin }) => {
     const { handlerUserSelectedForm, handlerRemoveUser } = useUsers();
-    const { login } = useAuth();;
+    const { login } = useAuth();
     return (
         <tr>
             <td>{id}</td>
