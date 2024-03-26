@@ -25,9 +25,9 @@ export const ProductoSave = async(producto)=>{
    }
    
 }
-export const ProductoUpdate = async (producto,id)=>{
+export const ProductoUpdate = async (producto)=>{
     try {
-        return await axios.put(`${url}/${id}`,producto)
+        return await axios.put(`${url}/${producto.id}`,producto)
     } catch (error) {
        throw error; 
     }
