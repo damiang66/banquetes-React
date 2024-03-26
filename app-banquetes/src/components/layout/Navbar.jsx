@@ -33,8 +33,8 @@ export const Navbar = () => {
                                     </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                <NavLink className="nav-link" to="/clientes/form">
-                                    Registrar Cliente
+                                <NavLink className="nav-link" to="/productos/lista">
+                                    Productos
                                 </NavLink>
                             </li>
                                 </>

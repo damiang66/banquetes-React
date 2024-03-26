@@ -83,9 +83,9 @@ export const useProducto = () => {
 
     }
 
-    const handlerProductoSelectedForm = (cliente) => {
+    const handlerProductoSelectedForm = (producto) => {
       
-   dispatch(productosSelected({...cliente}))
+   dispatch(productosSelected({...producto}))
     }
 
     const handlerOpenForm = () => {

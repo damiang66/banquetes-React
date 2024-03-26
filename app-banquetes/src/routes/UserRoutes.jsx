@@ -8,6 +8,8 @@ import { ClienteList } from "../components/Cliente/ClienteList"
 import { PaginaPrincipal } from "../components/layout/PaginaPrincipal"
 import { ClientePage } from "../components/Cliente/ClientePage"
 import { ClienteFormPage } from "../components/Cliente/ClienteFormPage"
+import { ProductoPage } from "../components/productos/ProductoPage"
+import { ProductoFormPage } from "../components/productos/ProductoFormPage"
 
 
 export const UserRoutes = () => {
@@ -28,6 +30,9 @@ export const UserRoutes = () => {
                         <Route path="clientes/lista" element={<ClientePage />} />
                         <Route path="clientes/form" element={<ClienteFormPage/>}    />              
                         <Route path="clientes/form/:id" element={<ClienteFormPage />}    /> 
+                        <Route path="productos/lista" element={<ProductoPage />} />
+                        <Route path="productos/form" element={<ProductoFormPage/>}    />              
+                        <Route path="productos/form/:id" element={<ProductoFormPage />}    /> 
                          </>
                     }
                     <Route path="/" element={<Navigate to="/users" />} />
