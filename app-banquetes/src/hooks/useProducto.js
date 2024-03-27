@@ -5,6 +5,7 @@ import { useAuth } from '../auth/hooks/useAuth';
 import { ProductoDelete, ProductoFindAll, ProductoSave, ProductoUpdate } from '../services/ProductoService';
 import { onError } from '../store/slices/cliente/clienteSlice';
 import { addProductos, loadingProductos, removeProductos, updateProductos } from '../store/slices/producto/productoSlice';
+import Swal from 'sweetalert2';
 
 export const useProducto = () => {
     const {productos,productosSelected,visibleForm,errors}= useSelector(state=>state.productos)
@@ -34,18 +35,19 @@ export const useProducto = () => {
 
             }
             Swal.fire(
-                (cliente.id === 0) ?
+                (producto.id === 0) ?
                     'Producto Creado' :
                     'Producto Actualizado',
-                (cliente.id === 0) ?
+                (producto.id === 0) ?
                     'El producto ha sido creado con exito!' :
                     'El producto ha sido actualizado con exito!',
                 'success'
             );
            // handlerCloseForm();
+
             navigate('/productos/lista');
         } catch (error) {
-            dispatch(onError(error.response.data))
+            dispatch(onError(error?.response?.data))
         }
     }
     

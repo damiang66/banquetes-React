@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useProducto } from '../../hooks/useProducto';
 import { useAuth } from '../../auth/hooks/useAuth';
 import { ProductoRow } from './ProductoRow';
+import { ProductoBuscar } from '../../services/ProductoService';
 
 export const ProductoList = () => {
   const { productos } = useProducto();
@@ -14,14 +15,19 @@ export const ProductoList = () => {
   }, [productos]);
 
   const buscar = async () => {
-      try {
-         // const respuesta = await ClienteBuscar(nombre);
-          setProductosb(respuesta.data);
-      } catch (error) {
-          console.error('Error al buscar productos:', error);
-          // Manejar el error si es necesario
-      }
-  };
+    try {
+        const respuesta = await ProductoBuscar(nombre);
+        if (respuesta && respuesta.data) {
+            setProductosb(respuesta.data);
+        } else {
+            // Manejar el caso donde respuesta.data es undefined
+            console.error('La respuesta no contiene datos:', respuesta);
+        }
+    } catch (error) {
+        console.error('Error al buscar productos:', error);
+        // Manejar el error si es necesario
+    }
+};
 
   const restablecer = () => {
       setNombre('');
@@ -30,6 +36,7 @@ export const ProductoList = () => {
 
   const onInputChange = (event) => {
       const { value } = event.target;
+      console.log(value);
       setNombre(value);
       if (value === '') {
           restablecer();
@@ -74,7 +81,7 @@ export const ProductoList = () => {
                           cantiadad={cantiadad}
                           cantidad_minima={cantidad_minima}
                           cantidadEnAlquiler={cantidadEnAlquiler}
-                          categoria={categoria.nombre}
+                          categoria={categoria?.nombre}
                       />
                   ))}
               </tbody>
