@@ -2,12 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { useProducto } from '../../hooks/useProducto';
 import { NavLink } from 'react-router-dom';
 import { CategoriaFindAll } from '../../services/ProductoService';
-
+const productoIncial = {
+    id:0,
+    categoria:{},
+    cantidad:0,
+    cantidad_minima:0,
+    cantidadEnAlquiler:0,
+    precio:0,
+}
 export const ProductoForm = ({ producto }) => {
     const { handlerAddProductos, errors } = useProducto();
-    const [productoForm, setProductoForm] = useState({
+    const [productoForm, setProductoForm] = useState(productoIncial
       
-    });
+    );
     const [categorias, setcategorias] = useState([])
     useEffect(() => {
         getCategorias()
@@ -75,10 +82,17 @@ export const ProductoForm = ({ producto }) => {
                     onChange={onInputChange} />
 
                 <input
+                type='hiden'
                     className="form-control my-3 w-75"
                     placeholder="cantidad en Alguiler"
                     name="cantidadEnAlquiler"
                     value={productoForm?.cantidadEnAlquiler}
+                    onChange={onInputChange} />
+                    <input
+                    className="form-control my-3 w-75"
+                    placeholder="precio"
+                    name="precio"
+                    value={productoForm?.precio}
                     onChange={onInputChange} />
 
               
