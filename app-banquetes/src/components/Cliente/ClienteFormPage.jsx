@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { useClientes } from '../../hooks/useClientes'
+
 import { useParams } from 'react-router-dom';
-import { ClienteForm } from './ClienteForm';
+import {ClienteForm} from '../Cliente/ClienteForm'
+
+import { useClientes } from '../../hooks/useClientes';
 
 export const ClienteFormPage = () => {
   const[titulo,setTitulo]=useState('')
@@ -16,7 +18,7 @@ console.log(id);
     const cliente = clientes.find(u => u.id == id)
     setClienteSeleccionado(cliente);
   }else{
-   setTitulo('Registro de Cliente')
+   setTitulo('Registrar Cliente')
   }
   },[])
   return (

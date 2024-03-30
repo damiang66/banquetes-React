@@ -10,8 +10,8 @@ import { ClientePage } from "../components/Cliente/ClientePage"
 import { ClienteFormPage } from "../components/Cliente/ClienteFormPage"
 import { ProductoPage } from "../components/productos/ProductoPage"
 import { ProductoFormPage } from "../components/productos/ProductoFormPage"
-
-
+import { AlquilerPage } from "../components/alquiler/AlquilerPage"
+import {AlquilerFormPage} from  "../components/alquiler/AlquilerFormPage"
 export const UserRoutes = () => {
     const { login } = useAuth();;
     return (
@@ -33,6 +33,9 @@ export const UserRoutes = () => {
                         <Route path="productos/lista" element={<ProductoPage />} />
                         <Route path="productos/form" element={<ProductoFormPage/>}    />              
                         <Route path="productos/form/:id" element={<ProductoFormPage />}    /> 
+                        <Route path="alquileres/lista" element={<AlquilerPage />} />
+                        <Route path="alquileres/form" element={<AlquilerFormPage/>}    />              
+                        <Route path="alquileres/form/:id" element={<AlquilerFormPage />}    /> 
                          </>
                     }
                     <Route path="/" element={<Navigate to="/users" />} />
