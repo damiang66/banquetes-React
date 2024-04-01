@@ -4,7 +4,7 @@ import { useAuth } from '../../auth/hooks/useAuth';
 import { ProductoRow } from './ProductoRow';
 import { ProductoBuscar } from '../../services/ProductoService';
 
-export const ProductoList = () => {
+export const ProductoList = ({productoParam}) => {
   const { productos } = useProducto();
   const [productosb, setProductosb] = useState([]);
   const [nombre, setNombre] = useState('');

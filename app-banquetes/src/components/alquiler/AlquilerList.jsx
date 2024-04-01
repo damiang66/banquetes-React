@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAlquiler } from '../../hooks/useAlquiler';
 import { useAuth } from '../../auth/hooks/useAuth';
 import {AlquilerRow} from '../alquiler/AlquilerRow'
+import { AlquileresVerProducto } from './AlquileresVerProducto';
 
 export const AlquilerList = () => {
-  const { alquileres } = useAlquiler();
+  const { alquileres,visibleProducto } = useAlquiler();
   const [alquileresb, setAlquileresb] = useState([]);
   const [nombre, setNombre] = useState('');
   const { login } = useAuth();
@@ -46,6 +47,7 @@ export const AlquilerList = () => {
 
   return (
       <>
+         
           <nav className="navbar navbar-light bg-light">
               <div className="container-fluid">
                   <form className="d-flex" onSubmit={(e) => e.preventDefault()}>

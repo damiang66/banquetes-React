@@ -3,12 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/hooks/useAuth";
 import { AlquilerDelete, AlquilerFindAll, AlquilerSave, AlquilerUpdate } from "../services/AlquilerService";
 import { addAlquiler, loadingAlquileres, onAlquilerSeleccionadoForm, onError, removeAlquileres, updateAlquileres } from "../store/slices/alquiler/alquilerSlice";
+import { useState } from "react";
 export const useAlquiler =()=>{
 
-const {alquileres,alquilerSelected,errors}=useSelector(state=>state.alquileres);
+const {alquileres,alquilerSelected,errors,visibleForm}=useSelector(state=>state.alquileres);
 const dispatch = useDispatch();
 const navigate = useNavigate();
 const { login, handlerLogout } = useAuth();
+const [visibleProducto, setvisibleProducto] = useState(false)
 
 const getAlquileres = async()=>{
     try {
@@ -82,12 +84,22 @@ const handlerRemoveAlquiler = (id) => {
     })
 
 }
+const handlerOpenForm = () => {
+     
+    dispatch(onOpenForm())
+}
 
 const handlerAlquilerSelectedForm = (alquiler) => {
   
 dispatch(onAlquilerSeleccionadoForm({...alquiler}))
 }
+const abrirModalProductos=()=>{
+setvisibleProducto(true);
+}
+const cerrarModalPropucto=()=>{
+    setvisibleProducto(false);
+}
 return {
-    getAlquileres,handlerAddAlquiler,handlerAlquilerSelectedForm,errors,alquileres,alquilerSelected,handlerRemoveAlquiler,
+    getAlquileres,handlerAddAlquiler,handlerAlquilerSelectedForm,errors,alquileres,alquilerSelected,handlerRemoveAlquiler,visibleForm,handlerOpenForm,abrirModalProductos,cerrarModalPropucto,visibleProducto}
 }
-}
+

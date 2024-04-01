@@ -74,7 +74,7 @@ export const alquilerSlice = createSlice({
         },
         onCloseForm:(state)=>{
             state.visibleForm=false;
-            state.userSelected=initialUserForm;
+          //  state.userSelected=initialUserForm;
         },
         onError:(state,action)=>{
           state.errors=action.payload  
@@ -92,5 +92,6 @@ export const {
     onOpenForm,
     onCloseForm,
     onError,
+    visibleForm
     
 }=alquilerSlice.actions;
