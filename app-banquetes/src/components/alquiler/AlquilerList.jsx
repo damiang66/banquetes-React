@@ -12,6 +12,7 @@ export const AlquilerList = () => {
 
   useEffect(() => {
       setAlquileresb(alquileres);
+      console.log(alquileres);
   }, [alquileres]);
 
   const buscar = async () => {
@@ -77,18 +78,20 @@ export const AlquilerList = () => {
                   </tr>
               </thead>
               <tbody>
-                  {alquileresb.map(({ id, cliente, usuario, direccion, producto, precioTotal, fecha,alquilado,retirado }) => (
+                  {alquileresb.map(({ id, cliente, usuario, direccion, productos, precioTotal, fecha,alquilado,retirado,cantidad }) => (
+                   
                       <AlquilerRow 
                           key={id}
                           id={id}
                           cliente={cliente}
                           usuario={usuario}
                           direccion={direccion}
-                          producto={producto}
+                          productos={productos}
                           precioTotal={precioTotal}
                           fecha={fecha}
                           alquilado={alquilado}
                           retirado={retirado}
+                          cantidad={cantidad}
                          
                       />
                   ))}

@@ -36,7 +36,7 @@ export const AlquilerForm = ({alquiler}) => {
                 className="form-control my-3 w-75"
                 placeholder="nombre"
                 name="nombre"
-                value={ alquilerForm?.cliente}
+                value={ alquilerForm?.cliente?.nombre}
                 onChange={onInputChange} />
             <p className="text-danger">{ errors?.cliente?.nombre}</p>
             <input

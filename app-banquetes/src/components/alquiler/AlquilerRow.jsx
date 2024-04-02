@@ -4,7 +4,7 @@ import { useAuth } from '../../auth/hooks/useAuth';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { AlquileresVerProducto } from './AlquileresVerProducto';
 
-export const AlquilerRow = ({id, cliente, usuario, direccion, producto, precioTotal, fecha,alquilado,retirado}) => {
+export const AlquilerRow = ({id, cliente, usuario, direccion, productos, precioTotal, fecha,alquilado,retirado,cantidad}) => {
   const { handlerAlquilerSelectedForm, handlerRemoveAlquiler,abrirModalProductos,visibleProducto} = useAlquiler();
   const navegate = useNavigate()
   const { login } = useAuth();
@@ -18,7 +18,8 @@ const closeModal = () => {
 };
 return (
   <>
- <AlquileresVerProducto isOpen={isModalOpen} onClose={closeModal} />
+ 
+ <AlquileresVerProducto isOpen={isModalOpen} onClose={closeModal} productos={productos} cantidad={cantidad} />
   <tr>
   <td>{id}</td>
   <td>{cliente?.nombre}</td> 
