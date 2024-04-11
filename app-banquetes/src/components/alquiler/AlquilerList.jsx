@@ -67,8 +67,9 @@ export const AlquilerList = () => {
                       <th>productos</th>
                       <th>precio Total</th>
                       <th>Fecha</th>
-                      <th>Alquilado</th>
-                      <th>Retirado</th>
+                      <th>Estado</th>
+                      <th>cantidad</th>
+                    
                       {!login.isAdmin || (
                           <>
                               <th>Editar</th>
@@ -78,7 +79,7 @@ export const AlquilerList = () => {
                   </tr>
               </thead>
               <tbody>
-                  {alquileresb.map(({ id, cliente, usuario, direccion, productos, precioTotal, fecha,alquilado,retirado,cantidad }) => (
+                  {alquileresb.map(({ id, cliente, usuario, direccion, productos, precioTotal, fecha,estado,cantidad }) => (
                    
                       <AlquilerRow 
                           key={id}
@@ -89,8 +90,8 @@ export const AlquilerList = () => {
                           productos={productos}
                           precioTotal={precioTotal}
                           fecha={fecha}
-                          alquilado={alquilado}
-                          retirado={retirado}
+                          
+                          estado={estado}
                           cantidad={cantidad}
                          
                       />

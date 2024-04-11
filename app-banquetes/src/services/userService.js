@@ -20,7 +20,13 @@ export const findAll = async() => {
     }
     return null;
 }
-
+export const UsuarioNombre = async(nombre)=>{
+    try {
+        return await axios.get(`${BASE_URL}/nombre/${nombre}`)
+    } catch (error) {
+        
+    }
+}
 export const save = async ({ username, email, password, admin }) => {
     try {
         console.log(admin);

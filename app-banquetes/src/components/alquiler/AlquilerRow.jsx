@@ -4,7 +4,7 @@ import { useAuth } from '../../auth/hooks/useAuth';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { AlquileresVerProducto } from './AlquileresVerProducto';
 
-export const AlquilerRow = ({id, cliente, usuario, direccion, productos, precioTotal, fecha,alquilado,retirado,cantidad}) => {
+export const AlquilerRow = ({id, cliente, usuario, direccion, productos, precioTotal, fecha,estado,cantidad}) => {
   const { handlerAlquilerSelectedForm, handlerRemoveAlquiler,abrirModalProductos,visibleProducto} = useAlquiler();
   const navegate = useNavigate()
   const { login } = useAuth();
@@ -30,8 +30,8 @@ return (
   </></td>
   <td>{precioTotal}</td>
   <td>{fecha}</td>
-  <td>{alquilado}</td>
-  <td>{retirado}</td>
+  <td>{estado}</td>
+  <td>{cantidad}</td>
   {!login.isAdmin ||
       <>
           
